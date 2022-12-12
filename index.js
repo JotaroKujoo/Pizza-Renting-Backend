@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(router)
 
 app.listen(PORT,()=>{
-    console.log("server listening on port".PORT)
+    console.log("server listening on port",PORT)
     db.authenticate().then(
         console.log("Conexión con la DB establecida")
     ).catch(error => 

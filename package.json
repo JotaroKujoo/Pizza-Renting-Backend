@@ -4,7 +4,8 @@
   "description": "API RESTFUL FROM A PIZZA ORDERING APP",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/JotaroKujoo/Pizza-Renting-Backend#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
