@@ -64,4 +64,4 @@ PizzeriaController.getPizzasOnPizzeria = async (req,res) => {
 }
 
 
-module.exports = PizzeriaController;
+module.exports = {PizzeriaController};
