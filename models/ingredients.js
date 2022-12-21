@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ingredients.init({
-    id_ingredient: {
+    id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,

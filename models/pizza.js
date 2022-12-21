@@ -14,16 +14,28 @@ module.exports = (sequelize, DataTypes) => {
       pizza.belongsTo(models.ingredients, {
         foreignKey: "name"
       });
+      pizza.hasOne(models.pizzeria, {
+        foreignKey: "name"
+      })
     }
   }
   pizza.init({
-    id_pizza: {
+    id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
     name: DataTypes.STRING,
+
+    name_pizzeria:{
+      type:DataTypes.STRING,
+      allowNull: false,
+      references :{
+        model: "pizzeria",
+        key: "name"
+      }
+    },
     
     ingredient_1: {
       type:DataTypes.STRING,
