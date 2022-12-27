@@ -1,0 +1,24 @@
+# Query: id_role
+# ContextLines: 1
+
+4 results - 4 files
+
+controllers\authController.js:
+  123              id: userFounded.id,
+  124:             role: userFounded.roleId
+  125          },secret)
+
+migrations\5-create-users.js:
+  28        },
+  29:       roleId: {
+  30          type: Sequelize.INTEGER,
+
+models\user.js:
+  26      password: DataTypes.STRING,
+  27:     roleId: {
+  28        type: DataTypes.INTEGER,
+
+services\AuthServices.js:
+  59      //     updatedAt: "2022-12-23",
+  60:     //     roleId: 2
+  61      //  })

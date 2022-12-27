@@ -18,7 +18,9 @@ const jsonwebtoken = require("jsonwebtoken");
 const authRegisterController = async (req, res) => {
     const body = await req.body
 
-    //Assert valid password
+    
+
+    // Assert valid password
     try {
         assertValidPasswordService(body.password)
     }
@@ -29,8 +31,8 @@ const authRegisterController = async (req, res) => {
         })
         return;
     }
-
-    //Assert valid mail
+    
+    // //Assert valid mail
     try {
         assertEmailIsValidService(body.mail)
         
@@ -43,9 +45,9 @@ const authRegisterController = async (req, res) => {
         return;
     }
 
-    //Assert the mail has been registered
+    // //Assert the mail has been registered
     try {
-        assertEmailIsUniqueService(body.email)
+        assertEmailIsUniqueService(body.mail)
         
     }
     catch (error) {
@@ -55,12 +57,12 @@ const authRegisterController = async (req, res) => {
         })
         return;
     }
+    
 
-    //Create a new user
+    // //Create a new user
     try {
         const newUser = await createUserService(body)
         res.status(201).json({
-            user: newUser.name,
             message: "Registered successfully"
         })
     }
@@ -70,6 +72,7 @@ const authRegisterController = async (req, res) => {
             error: "Something went wrong!"
         })
         return;
+
     }
 }
 
@@ -117,7 +120,7 @@ const authLoginController = async (req,res) => {
             mail: userFounded.mail,
             name: userFounded.name,
             id: userFounded.id,
-            role: userFounded.id_role
+            role: userFounded.roleId
         },secret)
         res.status(200).json({
             message: "Login successful",

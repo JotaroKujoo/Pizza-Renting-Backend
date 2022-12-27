@@ -9,4 +9,4 @@ const {
 router.post('/login', authLoginController)
 router.post('/register', authRegisterController)
 
-module.export = router;
+module.exports = router;

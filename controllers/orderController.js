@@ -1,10 +1,10 @@
 const models = require("../models/index");
 
-const OrderControllers = {};
+const orderControllers = {};
 
 //Order a pizza
 
-OrderControllers.orderPizza = async (req, res) => {
+orderControllers.orderPizza = async (req, res) => {
     try {
         let body = req.body;
 
@@ -33,4 +33,4 @@ OrderControllers.orderPizza = async (req, res) => {
     }
 }
 
-module.exports = {OrderControllers}
+module.exports 

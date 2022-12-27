@@ -19,7 +19,7 @@ UserControllers.getMyData = async (req, res) => {
 //Update the user data
 UserControllers.updateUserData = async (req, res) => {
     const mail = req.auth.mail
-    const user = req.body
+    const user = req.body    
     const userFound = await models.user.findOne({
         where: {
             mail: req.auth.mail
