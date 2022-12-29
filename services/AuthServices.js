@@ -63,12 +63,31 @@ const createUserService = async(userBody) => {
      return user;
 }
 
+//Service to create custom pizzas
+
+const createCustomPizzaService = async(pizzaBody) => {
+    
+    const pizza = await models.pizza_ingredients.create({
+        name: pizzaBody.name,
+        idPizza: pizzaBody.idPizza,
+        ingredient_1: pizzaBody.ingredient_1,
+        ingredient_2: pizzaBody.ingredient_2,
+        ingredient_3: pizzaBody.ingredient_3,
+        ingredient_4: pizzaBody.ingredient_4,
+        ingredient_5: pizzaBody.ingredient_5,
+        ingredient_6: pizzaBody.ingredient_6,
+    })
+    return pizza;
+
+}
+
 
 module.exports = {
     assertValidPasswordService,
     assertEmailIsUniqueService,
     assertEmailIsValidService,
     encryptPasswordService,
-    createUserService
+    createUserService,
+    createCustomPizzaService
 }
 
