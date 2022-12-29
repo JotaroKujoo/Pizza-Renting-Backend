@@ -9,10 +9,16 @@ orderControllers.orderPizza = async (req, res) => {
         let body = req.body;
 
         if (body.mail === req.auth.mail){
-            let pizza = await models.pizza.findOne({
+            let pizza = await models.pizza_ingredients.findOne({
                 where : {
                     name: body.name,
-                    name_pizzeria: body.pizzeria
+                    idPizza: body.idPizza,
+                    ingredient_1: body.ingredient_1,
+                    ingredient_2: body.ingredient_2,
+                    ingredient_3: body.ingredient_3,
+                    ingredient_4: body.ingredient_4,
+                    ingredient_5: body.ingredient_5,
+                    ingredient_6: body.ingredient_6,
 
                 }
             })
@@ -25,6 +31,8 @@ orderControllers.orderPizza = async (req, res) => {
                 return res.status(200).json(resp,{
                     message: "Pizza Order Created Successfully"
                 })
+            }else{
+                
             }
         }
     } catch (error) {
