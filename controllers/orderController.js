@@ -1,4 +1,6 @@
 const models = require("../models/index");
+const { createCustomPizzaService } = require("../services/AuthServices");
+
 
 const orderControllers = {};
 
@@ -9,17 +11,20 @@ orderControllers.orderPizza = async (req, res) => {
         let body = req.body;
 
         if (body.mail === req.auth.mail){
-            let pizza = await models.pizza.findOne({
+            let pizza = await models.pizza_ingredients.findOne({
                 where : {
                     name: body.name,
-                    name_pizzeria: body.pizzeria
+                    idPizza: body.idPizza,
+                    ingredient_1: body.ingredient_1,
+                    ingredient_2: body.ingredient_2,
+                    ingredient_3: body.ingredient_3,
+                    ingredient_4: body.ingredient_4,
+                    ingredient_5: body.ingredient_5,
+                    ingredient_6: body.ingredient_6,
 
                 }
             })
-            if (body.without){
-                console.log(body.without)
-                
-            }
+
             if (pizza){
                 let resp = await models.order.create({
                     createdAt: "22-12-2022",
@@ -29,6 +34,32 @@ orderControllers.orderPizza = async (req, res) => {
                 return res.status(200).json(resp,{
                     message: "Pizza Order Created Successfully"
                 })
+            }else{
+                createCustomPizzaService(body)
+                let customPizza = await models.pizza_ingredients.findOne({
+                    where : {
+                        name: body.name,
+                        idPizza: body.idPizza,
+                        ingredient_1: body.ingredient_1,
+                        ingredient_2: body.ingredient_2,
+                        ingredient_3: body.ingredient_3,
+                        ingredient_4: body.ingredient_4,
+                        ingredient_5: body.ingredient_5,
+                        ingredient_6: body.ingredient_6,
+                    }  
+                })
+                if (customPizza){
+                    let resp = await models.order.create({
+                        createdAt: "22-12-2022",
+                        id_pizza: pizza.id,
+                        id_user: req.auth.id
+                    })
+                    return res.status(200).json(resp,{
+                        message: "Pizza Order Created Successfully"
+                    })
+                }
+                
+
             }
         }
     } catch (error) {

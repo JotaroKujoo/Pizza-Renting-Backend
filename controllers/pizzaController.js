@@ -65,8 +65,18 @@ PizzaController.getPizzasByIngredient = async (req,res) => {
                 ingredient_4 : nameIngredient
             } 
         })
+        const foundedPizzas5 = await models.pizzas.findAll({
+            where:{
+                ingredient_5 : nameIngredient
+            } 
+        })
+        const foundedPizzas6 = await models.pizzas.findAll({
+            where:{
+                ingredient_6 : nameIngredient
+            } 
+        })
 
-        const foundedPizzas = (foundedPizzas1, foundedPizzas2, foundedPizzas3, foundedPizzas4).json()
+        const foundedPizzas = (foundedPizzas1, foundedPizzas2, foundedPizzas3, foundedPizzas4,foundedPizzas5,foundedPizzas6).json()
 
         if (!foundedPizzas){
             res.status(404).send({
