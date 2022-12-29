@@ -7,7 +7,7 @@ PizzeriaController.findPizzeriaByNameController = async (req,res) => {
     const pizzeriaName = req.body.name
     try {
         
-    const foundPizzeria = await models.pizzeria.findOne({
+    const foundPizzeria = await models.pizzerias.findOne({
         where:{
             name:pizzeriaName
         }
@@ -29,7 +29,7 @@ PizzeriaController.findPizzeriaByNameController = async (req,res) => {
 PizzeriaController.findPizzeriaByIdController = async (req,res) => {
     const pizzeriaId = req.body.id
     try {
-        const foundPizzeria = await models.pizzeria.findOne({
+        const foundPizzeria = await models.pizzerias.findOne({
             where:{
                 id:pizzeriaId
             }
@@ -44,7 +44,7 @@ PizzeriaController.findPizzeriaByIdController = async (req,res) => {
 PizzeriaController.getPizzasOnPizzeria = async (req,res) => {
     const pizzeriaName = req.body.name
 
-    const foundPizzeria = await models.pizzeria.findOne({
+    const foundPizzeria = await models.pizzerias.findOne({
         where:{
             name:pizzeriaName
         }

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       pizza.belongsTo(models.ingredients, {
         foreignKey: "name"
       });
-      pizza.hasOne(models.pizzeria, {
+      pizza.hasOne(models.pizzerias, {
         foreignKey: "name"
       })
     }
@@ -27,48 +27,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     name: DataTypes.STRING,
-
     name_pizzeria:{
       type:DataTypes.STRING,
       allowNull: false,
       references :{
-        model: "pizzeria",
+        model: "pizzerias",
         key: "name"
       }
     },
     
-    ingredient_1: {
-      type:DataTypes.STRING,
-      allowNull: false,
-      references :{
-        model: "ingredients",
-        key: "name"
-      }
-    },
-    ingredient_2: {
-      type:DataTypes.STRING,
-      allowNull: false,
-      references :{
-        model: "ingredients",
-        key: "name"
-      }
-    },
-    ingredient_3: {
-      type:DataTypes.STRING,
-      allowNull: true,
-      references :{
-        model: "ingredients",
-        key: "name"
-      }
-    },
-    ingredient_4: {
-      type:DataTypes.STRING,
-      allowNull: true,
-      references :{
-        model: "ingredients",
-        key: "name"
-      }
-    }
+    
     
   }, {
     sequelize,

@@ -5,54 +5,23 @@ module.exports = {
     await queryInterface.createTable('pizzas', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
+        autoIncrement: true,
         type: Sequelize.INTEGER
       },
       
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       name_pizzeria:{
         type: Sequelize.STRING,
         allowNull: false,
         references :{
-          model: "pizzeria",
+          model: "pizzerias",
           key: "name"
         }
       },
-      ingredient_1: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        references :{
-          model: "ingredients",
-          key: "name"
-        }
-      },
-      ingredient_2: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        references :{
-          model: "ingredients",
-          key: "name"
-        }
-      },
-      ingredient_3: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        references :{
-          model: "ingredients",
-          key: "name"
-        }
-      },
-      ingredient_4: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        references :{
-          model: "ingredients",
-          key: "name"
-        }
-      }
+      
     });
   },
   async down(queryInterface, Sequelize) {
