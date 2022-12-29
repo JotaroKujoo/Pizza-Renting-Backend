@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   user.init({
-    id_user: {
+    id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
@@ -24,12 +24,12 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     mail: DataTypes.STRING,
     password: DataTypes.STRING,
-    id_role: {
+    roleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    references: {
-      model: 'role',
-      key: 'id_role'
+      references: {
+        model: 'role',
+        key: 'id'
       }
     },
     createdAt: {

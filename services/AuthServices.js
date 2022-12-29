@@ -18,10 +18,10 @@ const assertValidPasswordService = (pass) =>{
 }
 
 //Service to assert the email is valid
-const assertEmailIsValidService = (email) => {
+const assertEmailIsValidService = (mail) => {
     const emailRegex = 
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const isValid = email.match(emailRegex);
+    const isValid = mail.match(emailRegex);
     if (!isValid){
         throw new Error("Invalid email")
     }
@@ -50,12 +50,16 @@ const encryptPasswordService = (pass) => {
 const createUserService = async(userBody) => {
      const hash = encryptPasswordService(userBody.password);
      userBody.password = hash
+     
      const user = await models.user.create({
         name: userBody.name,
         mail: userBody.mail,
         password: userBody.password,
-        id_role: 2
+        createdAt: "2022-12-23",
+        updatedAt: "2022-12-23",
+        roleId: 2
      })
+     console.log("Aqui llegamos bien")
      return user;
 }
 

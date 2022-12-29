@@ -16,13 +16,34 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   orders.init({
-    id_order: {
+    id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    id
+    id_pizza:{
+      type: DataTypes.INTEGER,
+      references: {
+        model: "pizzas",
+        key: "id"
+      }
+    },
+    id_user:{
+      type: DataTypes.INTEGER,
+      references: {
+        model: "users",
+        key: "id"
+      }
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'orders',
