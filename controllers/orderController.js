@@ -22,6 +22,10 @@ orderControllers.orderPizza = async (req, res) => {
 
                 }
             })
+            if (body.without){
+                console.log(body.without)
+                
+            }
             if (pizza){
                 let resp = await models.order.create({
                     createdAt: "22-12-2022",
@@ -41,4 +45,8 @@ orderControllers.orderPizza = async (req, res) => {
     }
 }
 
-module.exports 
+
+orderControllers.orderCustomPizza = async (req, res) => {
+    
+}
+module.exports = {orderControllers}
