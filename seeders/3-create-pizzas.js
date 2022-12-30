@@ -8,17 +8,17 @@ module.exports = {
         {
         id: 1,
         name: "Pizza margarita",
-        name_pizzeria: "Cheese Lovers",
+        pizzeriaName: "Cheese Lovers",
         },
         {
         id:2,
         name: "Pizza margarita",
-        name_pizzeria: "Meat Lovers",
+        pizzeriaName: "Meat Lovers",
         },
         {
         id:3,
         name: "Pizza margarita",
-        name_pizzeria: "Veggie Lovers",
+        pizzeriaName: "Veggie Lovers",
         }
     ], {});
     

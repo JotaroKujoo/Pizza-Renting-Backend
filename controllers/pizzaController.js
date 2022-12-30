@@ -51,7 +51,7 @@ PizzaController.getPizzasByPizzeria = async (req, res) => {
     try {
         const foundedPizzas = await models.pizza.findAll({
             where:{
-                name_pizzeria: pizzeriaName
+                pizzeriaName: pizzeriaName
             }
         })
         return res.status(200).json(foundedPizzas);
@@ -86,13 +86,13 @@ PizzaController.getPizzasByIngredient = async (req,res) => {
 
 PizzaController.getPizzasByIngredientInPizzeria = async (req,res) => {
     const nameIngredient = req.body.ingredient
-    const namePizzeria = req.body.pizzeria
+    const pizzeriaName = req.body.pizzeria
     try {
         
         const foundedPizzas = await models.pizza_ingredients.findAll({
             where:{
                 ingredient: nameIngredient,
-                name_pizzeria: namePizzeria
+                pizzeriaName: pizzeriaName
             }
         })
         

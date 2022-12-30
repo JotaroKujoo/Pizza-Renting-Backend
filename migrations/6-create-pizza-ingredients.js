@@ -20,7 +20,7 @@ module.exports = {
           key: 'id'
         }
       },
-      name_pizzeria:{
+      pizzeriaName:{
         type: Sequelize.STRING,
         allowNull: false,
         references:{
