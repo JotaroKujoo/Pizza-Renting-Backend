@@ -23,6 +23,12 @@ module.exports = {
           key: "id"
         }
       },
+      extra:{
+        type: Sequelize.STRING,
+      },
+      without:{
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -36,6 +36,12 @@ module.exports = (sequelize, DataTypes) => {
         key: "id"
       }
     },
+    extra:{
+      type: DataTypes.STRING,
+    },
+    without:{
+      type: DataTypes.STRING,
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE
