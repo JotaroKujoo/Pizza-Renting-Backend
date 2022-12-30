@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      pizza_ingredients.hasMany(models.ingredients);
       
     }
   }
@@ -32,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
-    ingredient_1: {
+    ingredient: {
       type: DataTypes.STRING,
       allowNull: true,
       references :{
@@ -40,45 +41,10 @@ module.exports = (sequelize, DataTypes) => {
         key: "name"
       }
     },
-    ingredient_2: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      references :{
-        model: "ingredients",
-        key: "name"
-      }
-    },
-    ingredient_3: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      references :{
-        model: "ingredients",
-        key: "name"
-      }
-    },
-    ingredient_4: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      references :{
-        model: "ingredients",
-        key: "name"
-      }
-    },
-    ingredient_5: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      references :{
-        model: "ingredients",
-        key: "name"
-      }
-    },
-    ingredient_6: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      references :{
-        model: "ingredients",
-        key: "name"
-      }
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
     }
   }, {
     sequelize,
