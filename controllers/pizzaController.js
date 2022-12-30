@@ -65,7 +65,7 @@ PizzaController.getPizzasByIngredient = async (req,res) => {
 }
 
 
-PizzaController.getPizzasByIngredientInRestaurant = async (req,res) => {
+PizzaController.getPizzasByIngredientInPizzeria = async (req,res) => {
     const nameIngredient = req.body.ingredient
     const namePizzeria = req.body.pizzeria
     try {

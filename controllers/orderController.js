@@ -38,7 +38,37 @@ orderControllers.orderPizza = async (req, res) => {
 }
 
 
-orderControllers.orderCustomPizza = async (req, res) => {
-    
+orderControllers.getMyOrders = async (req, res) => {
+    try {
+        let orders = await models.orders.findAll({
+            where : {
+                id_user: req.auth.id
+            }
+        })
+
+        return res.status(200).json({
+            orders: orders
+        })
+    }catch(error){
+    res.json({message: "Any order founded"})
+    console.log(error)
+    }
 }
+
+
+
+//ADMIN ONLY
+orderControllers.getAllOrders = async (req, res) => {
+    try {
+        let orders = await models.orders.findAll()
+
+        return res.status(200).json(orders)
+    }catch(error){
+    res.json({message: "Any order founded"})
+    console.log(error)
+    }
+}
+
+
+
 module.exports = {orderControllers}
