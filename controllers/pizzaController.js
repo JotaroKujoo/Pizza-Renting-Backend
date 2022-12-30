@@ -41,49 +41,46 @@ PizzaController.getPizzasByPizzeria = async (req, res) => {
     }
 }
 
+
 PizzaController.getPizzasByIngredient = async (req,res) => {
     const nameIngredient = req.body.ingredient
     try {
         
-        const foundedPizzas1 = await models.pizzas.findAll({
+        const foundedPizzas = await models.pizza_ingredients.findAll({
             where:{
-                ingredient_1 : nameIngredient
-            } 
+                ingredient: nameIngredient
+            }
         })
-        const foundedPizzas2 = await models.pizzas.findAll({
-            where:{
-                ingredient_2 : nameIngredient
-            } 
-        })
-        const foundedPizzas3 = await models.pizzas.findAll({
-            where:{
-                ingredient_3 : nameIngredient
-            } 
-        })
-        const foundedPizzas4 = await models.pizzas.findAll({
-            where:{
-                ingredient_4 : nameIngredient
-            } 
-        })
-        const foundedPizzas5 = await models.pizzas.findAll({
-            where:{
-                ingredient_5 : nameIngredient
-            } 
-        })
-        const foundedPizzas6 = await models.pizzas.findAll({
-            where:{
-                ingredient_6 : nameIngredient
-            } 
-        })
+        
 
-        const foundedPizzas = (foundedPizzas1, foundedPizzas2, foundedPizzas3, foundedPizzas4,foundedPizzas5,foundedPizzas6).json()
 
-        if (!foundedPizzas){
-            res.status(404).send({
-                message:"Error ingredient not found"
-            })
-        }
-        return res.status(200).json(foundedPizzas)
+
+        return res.status(200).json(foundedPizzas);
+            
+        
+    } catch (error) {
+        console.log(error)
+        res.status(404).send(error)
+    }
+}
+
+
+PizzaController.getPizzasByIngredientInRestaurant = async (req,res) => {
+    const nameIngredient = req.body.ingredient
+    const namePizzeria = req.body.pizzeria
+    try {
+        
+        const foundedPizzas = await models.pizza_ingredients.findAll({
+            where:{
+                ingredient: nameIngredient,
+                name_pizzeria: namePizzeria
+            }
+        })
+        
+
+
+
+        return res.status(200).json(foundedPizzas);
             
         
     } catch (error) {

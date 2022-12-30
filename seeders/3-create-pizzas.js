@@ -19,21 +19,6 @@ module.exports = {
         id:3,
         name: "Pizza margarita",
         name_pizzeria: "Veggie Lovers",
-        },
-        {
-        id:4,
-        name: "Pizza prosciutto",
-        name_pizzeria: "Meat Lovers",
-        },
-        {
-        id:5,
-        name: "Pizza pepperoni",
-        name_pizzeria: "Meat Lovers",
-        },
-        {
-        id:6,
-        name: "Pizza Gran Torino",
-        name_pizzeria: "Meat Lovers",
         }
     ], {});
     
