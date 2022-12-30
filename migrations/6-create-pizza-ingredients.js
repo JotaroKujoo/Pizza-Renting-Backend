@@ -20,7 +20,7 @@ module.exports = {
           key: 'id'
         }
       },
-      ingredient_1: {
+      ingredient: {
         type: Sequelize.STRING,
         allowNull: true,
         references :{
@@ -28,45 +28,10 @@ module.exports = {
           key: "name"
         }
       },
-      ingredient_2: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        references :{
-          model: "ingredients",
-          key: "name"
-        }
-      },
-      ingredient_3: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        references :{
-          model: "ingredients",
-          key: "name"
-        }
-      },
-      ingredient_4: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        references :{
-          model: "ingredients",
-          key: "name"
-        }
-      },
-      ingredient_5: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        references :{
-          model: "ingredients",
-          key: "name"
-        }
-      },
-      ingredient_6: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        references :{
-          model: "ingredients",
-          key: "name"
-        }
+      quantity: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 1
       }
     });
   },

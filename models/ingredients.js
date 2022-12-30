@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ingredients.hasMany(models.pizza)
+      ingredients.belongsTo(models.pizza_ingredients)
     }
   }
   ingredients.init({

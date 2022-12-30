@@ -7,49 +7,57 @@ module.exports = {
       {
       name: "Pizza margarita",
       idPizza: 1,
-      ingredient_1: "Salsa de tomate",
-      ingredient_2: "Mozzarella",
-      ingredient_3: "Orégano",
+      ingredient: "Salsa de tomate",
+      quantity: 1
+      },
+      {
+      name: "Pizza margarita",
+      idPizza: 1,
+      ingredient: "Mozzarella",
+      quantity: 1
+      },
+      {
+      name: "Pizza margarita",
+      idPizza: 1,
+      ingredient: "Orégano",
+      quantity: 1
       },
       {
       name: "Pizza margarita",
       idPizza: 2,
-      ingredient_1: "Salsa de tomate",
-      ingredient_2: "Mozzarella",
-      ingredient_3: "Orégano",
+      ingredient: "Salsa de tomate",
+      quantity: 1
+      },
+      {
+      name: "Pizza margarita",
+      idPizza: 2,
+      ingredient: "Mozzarella",
+      quantity: 1
+      },
+      {
+      name: "Pizza margarita",
+      idPizza: 2,
+      ingredient: "Orégano",
+      quantity: 1
       },
       {
       name: "Pizza margarita",
       idPizza: 3,
-      ingredient_1: "Salsa de tomate",
-      ingredient_2: "Mozzarella",
-      ingredient_3: "Orégano",
+      ingredient: "Salsa de tomate",
+      quantity: 1
       },
       {
-      name: "Pizza prosciutto",
-      idPizza: 4,
-      ingredient_1: "Salsa de tomate",
-      ingredient_2: "Mozzarella",
-      ingredient_3: "Orégano",
-      ingredient_4: "Jamón"
+      name: "Pizza margarita",
+      idPizza: 3,
+      ingredient: "Mozzarella",
+      quantity: 1
       },
       {
-      name: "Pizza pepperoni",
-      idPizza: 5,
-      ingredient_1: "Salsa de tomate",
-      ingredient_2: "Mozzarella",
-      ingredient_3: "Pepperoni",
-      ingredient_4: "Orégano"
-      },
-      {
-      name: "Pizza Gran Torino",
-      idPizza: 6,
-      ingredient_1: "Salsa de tomate",
-      ingredient_2: "Mozzarella",
-      ingredient_3: "Bacon",
-      ingredient_4: "Cebolla",
-      ingredient_5: "Orégano"
-      },
+      name: "Pizza margarita",
+      idPizza: 3,
+      ingredient: "Orégano",
+      quantity: 1
+      }
   ], {});
   },
 
