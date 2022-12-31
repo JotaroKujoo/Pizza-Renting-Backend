@@ -1,15 +1,19 @@
 const models = require("./../models/index");
+const {Op} = require("sequelize")
 
 
 const PizzeriaController = {}
 
-PizzeriaController.findPizzeriaByNameController = async (req,res) => {
+PizzeriaController.findPizzeriaByName = async (req,res) => {
     const pizzeriaName = req.body.name
     try {
         
-    const foundPizzeria = await models.pizzerias.findOne({
+    const foundPizzeria = await models.pizzerias.findAll({
         where:{
-            name:pizzeriaName
+            name:{
+                [Op.like]:`%${pizzeriaName}%`
+
+            }
         }
     })
     if(!foundPizzeria){
@@ -26,7 +30,7 @@ PizzeriaController.findPizzeriaByNameController = async (req,res) => {
 
 
 
-PizzeriaController.findPizzeriaByIdController = async (req,res) => {
+PizzeriaController.findPizzeriaById = async (req,res) => {
     const pizzeriaId = req.body.id
     try {
         const foundPizzeria = await models.pizzerias.findOne({

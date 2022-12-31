@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     name: DataTypes.STRING,
-    name_pizzeria:{
+    pizzeriaName:{
       type:DataTypes.STRING,
       allowNull: false,
       references :{

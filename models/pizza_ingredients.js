@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       pizza_ingredients.hasMany(models.ingredients);
+      pizza_ingredients.belongsTo(models.pizzerias)
       
     }
   }
@@ -31,6 +32,14 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         model: 'pizzas',
         key: 'id'
+      }
+    },
+    pizzeriaName:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      references:{
+        model: 'pizzerias',
+        key: 'name'
       }
     },
     ingredient: {

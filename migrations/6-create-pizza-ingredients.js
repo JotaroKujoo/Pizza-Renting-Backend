@@ -20,6 +20,14 @@ module.exports = {
           key: 'id'
         }
       },
+      pizzeriaName:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        references:{
+          model: 'pizzerias',
+          key: 'name'
+        }
+      },
       ingredient: {
         type: Sequelize.STRING,
         allowNull: true,
