@@ -5,7 +5,7 @@ const {isValidRole,isValidUser} = require("./../middlewares/authMiddleware")
 const {OrderControllers} = require("./../controllers/orderController")
 
 //Order one pizza
-router.post("/orderpizza",isValidUser,OrderControllers.orderPizza)
+router.post("/orderpizza",OrderControllers.orderPizza)
 
 //Get my orders
 router.get("/myorders",isValidUser,OrderControllers.getMyOrders)
