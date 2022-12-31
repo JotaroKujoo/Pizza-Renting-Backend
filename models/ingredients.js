@@ -11,17 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ingredients.belongsTo(models.pizza_ingredients)
     }
   }
   ingredients.init({
-    id: {
+    id : {
+      unique: true,
       allowNull: false,
       autoIncrement: true,
-      primaryKey: true,
       type: DataTypes.INTEGER
     },
-    name: DataTypes.STRING
+    name: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.STRING
+    },
   }, {
     sequelize,
     modelName: 'ingredients',
