@@ -1,7 +1,7 @@
 const jsonwebtoken = require('jsonwebtoken');
 require("dotenv").config;
 
-const authBearerMiddleware = async (req, res, next) => {
+const authBearerMiddleware = async (req, res) => {
     
     try {
         const { authorization } = req.headers;
@@ -24,8 +24,8 @@ const authBearerMiddleware = async (req, res, next) => {
         console.log(error)
         return
     };
-    next();
 };
+
 
 
 const isValidRole = (role) => (req,res,next) => {
