@@ -8,7 +8,7 @@ const authBearerMiddleware = async (req, res, next) => {
         if (strategy.toLowerCase() !== "bearer") {
             throw new Error("Invalid strategy")
         };
-        const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
+        const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET || "paraquequieressaberlo");
         const created = payload.created;
         const timeElapsed = Date.now() - created;
         const maxTimeElapsed = 3600000 // 1 hour
@@ -25,6 +25,7 @@ const authBearerMiddleware = async (req, res, next) => {
     };
     next();
 };
+
 
 const isValidRole = (role) => (req,res,next) => {
     if (req.auth?.role === role) {

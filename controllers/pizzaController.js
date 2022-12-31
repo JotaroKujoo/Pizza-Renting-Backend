@@ -1,4 +1,5 @@
 const models = require("./../models/index");
+const {Op} = require("sequelize")
 
 const PizzaController = {};
 
@@ -32,14 +33,20 @@ PizzaController.getPizzasById = async (req, res) => {
 
 
 PizzaController.getPizzasByName = async (req, res) => {
-    const pizzaName = req.body.name
+    const pizzaName = req.params.name
     try {
-        const foundedPizzas = await models.pizza.findAll({
+        let resp = await models.pizza.findAll({
             where:{
-                name: pizzaName
+                name:{
+                    [Op.like]: `%${pizzaName}%`
+                }
+                
             }
         })
-        return res.status(200).json(foundedPizzas);
+        .then(resp => {
+            res.send(resp);
+        })
+        return res.status(200).json(resp);
     } catch (error) {
         console.log(error)
         res.status(404).send(error);
@@ -51,7 +58,10 @@ PizzaController.getPizzasByPizzeria = async (req, res) => {
     try {
         const foundedPizzas = await models.pizza.findAll({
             where:{
-                pizzeriaName: pizzeriaName
+                pizzeriaName: {
+                    [Op.like]: `%${pizzeriaName}%`
+
+                }
             }
         })
         return res.status(200).json(foundedPizzas);
@@ -67,7 +77,10 @@ PizzaController.getPizzasByIngredient = async (req,res) => {
         
         const foundedPizzas = await models.pizza_ingredients.findAll({
             where:{
-                ingredient: nameIngredient
+                ingredient: {
+                    [Op.like]: `%${nameIngredient}%`
+
+                }
             }
         })
         
@@ -91,7 +104,9 @@ PizzaController.getPizzasByIngredientInPizzeria = async (req,res) => {
         
         const foundedPizzas = await models.pizza_ingredients.findAll({
             where:{
-                ingredient: nameIngredient,
+                ingredient: {
+                    [Op.like]: `%${nameIngredient}%`
+                },
                 pizzeriaName: pizzeriaName
             }
         })

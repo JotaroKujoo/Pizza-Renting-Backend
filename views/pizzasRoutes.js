@@ -8,7 +8,7 @@ const {PizzaController} = require("./../controllers/pizzaController")
 router.get("/getall",PizzaController.getAllPizzas)
 
 //Get pizzas by name
-router.get("/getbyname",PizzaController.getPizzasByName)
+router.get("/getbyname/:name",PizzaController.getPizzasByName)
 
 //Get pizzas in a Pizzeria
 router.get("/getbypizzeria",PizzaController.getPizzasByPizzeria)
