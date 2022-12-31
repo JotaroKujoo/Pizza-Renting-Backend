@@ -2,11 +2,11 @@ const models = require("../models/index");
 const { createCustomPizzaService } = require("../services/AuthServices");
 
 
-const orderControllers = {};
+const OrderControllers = {};
 
 //Order a pizza
 
-orderControllers.orderPizza = async (req, res) => {
+OrderControllers.orderPizza = async (req, res) => {
     try {
         let body = req.body;
 
@@ -19,26 +19,26 @@ orderControllers.orderPizza = async (req, res) => {
             })
 
             if (pizza){
-                let resp = await models.order.create({
-                    createdAt: "22-12-2022",
+                let resp = await models.orders.create({
+                    createdAt: "2022-12-23 00:00:00",
                     id_pizza: pizza.id,
                     id_user: req.auth.id,
-                    extra: pizza.extra,
-                    without: pizza.without
+                    extra: body.extra,
+                    without: body.without
                 })
-                return res.status(200).json(resp,{
+                return res.status(200).json({resp,
                     message: "Pizza Order Created Successfully"
                 })
             }
         }
     } catch (error) {
-        res.json({message: "Error while creating order"})
+        res.status(error.status || 500).json({message: "Error while creating order"})
         console.log(error)
     }
 }
 
 
-orderControllers.getMyOrders = async (req, res) => {
+OrderControllers.getMyOrders = async (req, res) => {
     try {
         let orders = await models.orders.findAll({
             where : {
@@ -58,7 +58,7 @@ orderControllers.getMyOrders = async (req, res) => {
 
 
 //ADMIN ONLY
-orderControllers.getAllOrders = async (req, res) => {
+OrderControllers.getAllOrders = async (req, res) => {
     try {
         let orders = await models.orders.findAll()
 
@@ -71,4 +71,4 @@ orderControllers.getAllOrders = async (req, res) => {
 
 
 
-module.exports = {orderControllers}
+module.exports = {OrderControllers}

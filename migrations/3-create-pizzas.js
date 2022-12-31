@@ -13,7 +13,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
       },
-      name_pizzeria:{
+      pizzeriaName:{
         type: Sequelize.STRING,
         allowNull: false,
         references :{

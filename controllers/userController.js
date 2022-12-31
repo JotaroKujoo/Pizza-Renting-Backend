@@ -8,7 +8,7 @@ const {encryptPasswordService} = require("../services/AuthServices")
 
 UserControllers.getMyData = async (req, res) => {
     const mail = req.auth.mail
-    const resp = await models.user.findAll({
+    const resp = await models.user.findOne({
         where:{
             mail: mail
         }
@@ -51,6 +51,9 @@ UserControllers.updateUserData = async (req, res) => {
 
 UserControllers.deleteUser = async (req, res) => {
     const mail = req.body.mail
+    if (mail === req.auth.mail){
+        throw new Error("You can't delete yourself as administrator")
+    }
     let resp = await models.user.destroy({
         where: {
             mail: mail

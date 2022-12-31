@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
-    name_pizzeria:{
+    pizzeriaName:{
       type: DataTypes.STRING,
       allowNull: false,
       references:{
