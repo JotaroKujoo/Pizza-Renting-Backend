@@ -11,7 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      pizza_ingredients.hasMany(models.ingredients);
+      pizza_ingredients.hasMany(models.ingredients,{
+        foreignKey:{
+          name: "ingredients",
+          allowNull: false
+        }
+      });
       pizza_ingredients.belongsTo(models.pizzerias)
       
     }

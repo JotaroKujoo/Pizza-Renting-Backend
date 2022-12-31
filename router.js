@@ -6,9 +6,10 @@ const pizzasRoutes = require("./views/pizzasRoutes")
 const userRoutes = require("./views/userRoutes")
 const pizzeriaRoutes = require("./views/pizzeriaRoutes")
 const ordersRoutes = require("./views/orderRoutes")
+const ingredientRoutes = require("./views/ingredientRoutes")
 const {authBearerMiddleware} = require("./middlewares/authMiddleware")
 
-
+router.use("/ingredients",ingredientRoutes)
 router.use("/pizzeria",pizzeriaRoutes)
 router.use("/auth", authRoutes)
 router.use(authBearerMiddleware)
