@@ -21,8 +21,8 @@ OrderControllers.orderPizza = async (req, res) => {
             if (pizza){
                 let resp = await models.orders.create({
                     createdAt: "2022-12-23 00:00:00",
-                    id_pizza: pizza.id,
-                    id_user: req.auth.id,
+                    pizzaId: pizza.id,
+                    userId: req.auth.id,
                     extra: body.extra,
                     without: body.without
                 })
@@ -42,7 +42,7 @@ OrderControllers.getMyOrders = async (req, res) => {
     try {
         let orders = await models.orders.findAll({
             where : {
-                id_user: req.auth.id
+                userId: req.auth.id
             }
         })
 
