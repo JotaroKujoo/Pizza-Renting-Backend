@@ -22,14 +22,14 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    id_pizza:{
+    pizzaId:{
       type: DataTypes.INTEGER,
       references: {
         model: "pizzas",
         key: "id"
       }
     },
-    id_user:{
+    userId:{
       type: DataTypes.INTEGER,
       references: {
         model: "users",
