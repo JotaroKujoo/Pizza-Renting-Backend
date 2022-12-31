@@ -2,9 +2,10 @@ const jsonwebtoken = require('jsonwebtoken');
 require("dotenv").config;
 
 const authBearerMiddleware = async (req, res, next) => {
-    const { authorization } = req.headers;
-    const [strategy, jwt] = authorization.split(" ");
+    
     try {
+        const { authorization } = req.headers;
+        const [strategy, jwt] = authorization.split(" ");
         if (strategy.toLowerCase() !== "bearer") {
             throw new Error("Invalid strategy")
         };
