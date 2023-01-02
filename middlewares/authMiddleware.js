@@ -17,13 +17,9 @@ const authBearerMiddleware = async (req, res,next) => {
             throw new Error("Token has expired")
         }
         req.auth = payload;
-        console.log("Aqui llega")
         next()
         
-
-    } catch (error) {
-        
-        console.log("Aqui llega")
+    } catch (error) {        
         res.status(401).json({message:"You're not authenticated"})
         console.log(error)
         return
