@@ -1,7 +1,7 @@
 const jsonwebtoken = require('jsonwebtoken');
 require("dotenv").config;
 
-const authBearerMiddleware = async (req, res) => {
+const authBearerMiddleware = async (req, res,next) => {
     
     try {
         const { authorization } = req.headers;
@@ -17,9 +17,13 @@ const authBearerMiddleware = async (req, res) => {
             throw new Error("Token has expired")
         }
         req.auth = payload;
+        console.log("Aqui llega")
+        next()
         
 
     } catch (error) {
+        
+        console.log("Aqui llega")
         res.status(401).json({message:"You're not authenticated"})
         console.log(error)
         return
