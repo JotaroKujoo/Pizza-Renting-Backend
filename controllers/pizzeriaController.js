@@ -50,11 +50,11 @@ PizzeriaController.findPizzeriaByName = async (req,res) => {
 
 
 PizzeriaController.findPizzeriaById = async (req,res) => {
-    const pizzeriaId = req.body.id
+    const pizzeria = req.body
     try {
         const foundPizzeria = await models.pizzerias.findOne({
             where:{
-                id:pizzeriaId
+                id:pizzeria.id
             }
         })
         return res.status(200).json({foundPizzeria});
