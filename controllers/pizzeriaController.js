@@ -1,8 +1,28 @@
 const models = require("./../models/index");
-const {Op} = require("sequelize")
+const {Op} = require("sequelize");
+const { removeTicks } = require("sequelize/types/utils");
 
 
 const PizzeriaController = {}
+
+PizzeriaController.findAllPizzerias = async(req,res) => {
+    try {
+        const foundedPizzerias = await models.pizzerias.findAll()
+        if (! foundedPizzerias){
+            return res.status(404).json({
+                message: "No se han encontrado pizzerias"
+            })
+        }
+        
+        return res.status(200).json(foundedPizzerias)
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({
+            message: error
+        })
+        
+    }
+}
 
 PizzeriaController.findPizzeriaByName = async (req,res) => {
     const pizzeriaName = req.body.name

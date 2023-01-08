@@ -9,5 +9,7 @@ router.get("/byname",PizzeriaController.findPizzeriaByName)
 //Get pizzeria by ID
 router.get("/byid",PizzeriaController.findPizzeriaById)
 
+router.get("/all", PizzeriaController.findAllPizzerias)
+
 
 module.exports = router
