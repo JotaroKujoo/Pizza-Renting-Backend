@@ -1,5 +1,6 @@
 const models = require("./../models/index");
 const {Op} = require("sequelize");
+const { sequelize } = require("./../models/index");
 
 
 const PizzeriaController = {}
@@ -52,11 +53,9 @@ PizzeriaController.findPizzeriaByName = async (req,res) => {
 PizzeriaController.findPizzeriaById = async (req,res) => {
     const pizzeriaId = await req.params
     try {
-        const foundPizzeria = await models.pizzerias.findOne({
-            where:{
-                id:pizzeriaId
-            }
-        })
+        const foundPizzeria = await sequelize.query(
+            `SELECT "id", "name" FROM "pizzerias" AS "pizzerias" WHERE "pizzerias"."id" = "${pizzeriaId}" LIMIT 1;`
+        )
         return res.status(200).json({foundPizzeria});
     }catch(error){
         console.log(error)
