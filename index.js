@@ -4,9 +4,11 @@ const db = require('./db/db')
 const PORT = process.env.PORT || 3000
 require("dotenv").config
 const HOST = process.env.DB_HOST || "0.0.0.0"
+const cors = require('cors')
+
 
 const app = express()
-
+app.use(cors())
 app.use(express.json())
 app.use(router)
 
