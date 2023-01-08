@@ -40,7 +40,7 @@ PizzeriaController.findPizzeriaByName = async (req,res) => {
             message: "Pizzeria no encontrada."
         })
     }
-    return res.status(200).json(foundPizzeria);
+    return res.status(200).json({foundPizzeria});
     } catch (error) {
         console.log(error)
         res.send(error)
@@ -57,7 +57,7 @@ PizzeriaController.findPizzeriaById = async (req,res) => {
                 id:pizzeriaId
             }
         })
-        return res.status(200).json(foundPizzeria);
+        return res.status(200).json({foundPizzeria});
     }catch(error){
         console.log(error)
         res.send(error)
