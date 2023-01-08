@@ -1,6 +1,5 @@
 const models = require("./../models/index");
 const {Op} = require("sequelize");
-const { removeTicks } = require("sequelize/types/utils");
 
 
 const PizzeriaController = {}
