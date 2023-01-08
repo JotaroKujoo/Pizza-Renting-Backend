@@ -7,7 +7,7 @@ const {PizzeriaController} = require("./../controllers/pizzeriaController")
 router.get("/byname",PizzeriaController.findPizzeriaByName)
 
 //Get pizzeria by ID
-router.get("/byid",PizzeriaController.findPizzeriaById)
+router.get("/byid/:id",PizzeriaController.findPizzeriaById)
 
 router.get("/all", PizzeriaController.findAllPizzerias)
 
