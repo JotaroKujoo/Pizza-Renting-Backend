@@ -51,7 +51,7 @@ PizzeriaController.findPizzeriaByName = async (req,res) => {
 
 
 PizzeriaController.findPizzeriaById = async (req,res) => {
-    const pizzeriaId = await req.params
+    const pizzeriaId = await req.params.id
     try {
         const foundPizzeria = await sequelize.query(
             `SELECT "id", "name" FROM "pizzerias" AS "pizzerias" WHERE "pizzerias"."id" = "${pizzeriaId}" LIMIT 1;`
