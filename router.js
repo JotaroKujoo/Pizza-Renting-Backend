@@ -12,11 +12,11 @@ const {authBearerMiddleware} = require("./middlewares/authMiddleware")
 router.use("/ingredients",ingredientRoutes)
 router.use("/pizzeria",pizzeriaRoutes)
 router.use("/auth", authRoutes)
-router.use(authBearerMiddleware)
+
 
 router.use("/pizzas", pizzasRoutes)
 router.use("/user", userRoutes)
-
+router.use(authBearerMiddleware)
 router.use("/orders", ordersRoutes)
 
 module.exports = router
