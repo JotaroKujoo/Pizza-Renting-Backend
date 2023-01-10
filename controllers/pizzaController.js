@@ -54,7 +54,7 @@ PizzaController.getPizzasByName = async (req, res) => {
 }
 
 PizzaController.getPizzasByPizzeria = async (req, res) => {
-    const pizzeriaName = req.body.pizzeria
+    const pizzeriaName = req.params.name
     try {
         const foundedPizzas = await models.pizza.findAll({
             where:{
