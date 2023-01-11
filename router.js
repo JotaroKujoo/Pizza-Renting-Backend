@@ -13,6 +13,8 @@ router.use("/ingredients",ingredientRoutes)
 router.use("/pizzeria",pizzeriaRoutes)
 router.use("/auth", authRoutes)
 router.use("/pizzas", pizzasRoutes)
+
+
 router.use(authBearerMiddleware)
 router.use("/user", userRoutes)
 router.use("/orders", ordersRoutes)
