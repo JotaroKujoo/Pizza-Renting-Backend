@@ -41,19 +41,9 @@ const isValidRole = (role) => (req,res,next) => {
     }
 }
 
-const isValidUser = async (req,res,next) => {
-    const mail = req.body.mail
-    if(req.auth?.mail === mail){
-        next();
-    }else{
-        res.status(401).json({message:"You're not authorized"})
-        return
 
-    }
-}
 
 module.exports = {
     authBearerMiddleware,
     isValidRole,
-    isValidUser
 }

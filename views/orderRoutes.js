@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {isValidRole,isValidUser} = require("./../middlewares/authMiddleware")
+const {isValidRole} = require("./../middlewares/authMiddleware")
 
 const {OrderControllers} = require("./../controllers/orderController")
 
@@ -8,9 +8,9 @@ const {OrderControllers} = require("./../controllers/orderController")
 router.post("/orderpizza",OrderControllers.orderPizza)
 
 //Get my orders
-router.get("/myorders",isValidUser,OrderControllers.getMyOrders)
+router.get("/myorders",OrderControllers.getMyOrders)
 
 //Get all orders ADMIN ONLY
-router.get("/allorders",isValidUser,isValidRole(1),OrderControllers.getAllOrders)
+router.get("/allorders",isValidRole(1),OrderControllers.getAllOrders)
 
 module.exports = router;
