@@ -5,9 +5,9 @@ const authBearerMiddleware = async (req, res,next) => {
     
     try {
         const { authorization } = req.headers;
-        if(!authorization){
-            return res.status(401).json({message:"Not token provided"});
-        }
+        // if(!authorization){
+        //     return res.status(401).json({message:"Not token provided"});
+        // }
         const [strategy, jwt] = authorization.split(" ");
         if (strategy.toLowerCase() !== "bearer") {
             throw new Error("Invalid strategy")
