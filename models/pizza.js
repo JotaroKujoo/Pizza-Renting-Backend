@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         key: "name"
       }
     },
-    description: DataTypes.STRING
+    description: DataTypes.STRING,
     
     
     

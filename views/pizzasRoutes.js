@@ -17,7 +17,7 @@ router.get("/getbypizzeria/:name",PizzaController.getPizzasByPizzeria)
 router.get("/getbyingredient",PizzaController.getPizzasByIngredient)
 
 //Get pizza by Id
-router.get("/getbyid",PizzaController.getPizzasById)
+router.get("/getbyid/:id",PizzaController.getPizzasById)
 
 //Get pizzas by ingredient in a pizzeria
 router.get("/getbyingredientinpizzeria",PizzaController.getPizzasByIngredientInPizzeria)
