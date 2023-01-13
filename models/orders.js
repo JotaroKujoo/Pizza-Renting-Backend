@@ -49,7 +49,8 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: {
       allowNull: false,
       type: DataTypes.DATE
-    }
+    },
+    address: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'orders',

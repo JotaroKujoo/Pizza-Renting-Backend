@@ -50,36 +50,22 @@ const encryptPasswordService = (pass) => {
 const createUserService = async(userBody) => {
      const hash = encryptPasswordService(userBody.password);
      userBody.password = hash
+     let today = new Date()
      
      const user = await models.user.create({
         name: userBody.name,
         mail: userBody.mail,
         password: userBody.password,
-        createdAt: "2022-12-23",
-        updatedAt: "2022-12-23",
+        createdAt: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDay()}`,
+        updatedAt: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDay()}`,
         roleId: 2
      })
-     console.log("Aqui llegamos bien")
      return user;
 }
 
-//Service to create custom pizzas
 
-const createCustomPizzaService = async(pizzaBody) => {
-    
-    const pizza = await models.pizza_ingredients.create({
-        name: pizzaBody.name,
-        idPizza: pizzaBody.idPizza,
-        ingredient_1: pizzaBody.ingredient_1,
-        ingredient_2: pizzaBody.ingredient_2,
-        ingredient_3: pizzaBody.ingredient_3,
-        ingredient_4: pizzaBody.ingredient_4,
-        ingredient_5: pizzaBody.ingredient_5,
-        ingredient_6: pizzaBody.ingredient_6,
-    })
-    return pizza;
 
-}
+
 
 
 module.exports = {
@@ -88,6 +74,5 @@ module.exports = {
     assertEmailIsValidService,
     encryptPasswordService,
     createUserService,
-    createCustomPizzaService
 }
 
