@@ -19,11 +19,10 @@ IngredientController.getAllIngredients = async (req,res) => {
 
 IngredientController.getIngredientsFromPizza = async (req, res) => {
     try {
-        const body = req.body
+        const params = req.params
         const foundedPizza = await models.pizza.findOne({
             where:{
-                name:body.name,
-                pizzeriaName:body.pizzeria
+                id: params.id
             }
         })
         if(!foundedPizza){

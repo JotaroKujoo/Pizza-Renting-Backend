@@ -8,6 +8,6 @@ const {IngredientController} = require("./../controllers/ingredientsController")
 router.get("/getall", IngredientController.getAllIngredients)
 
 //Obtener los ingredientes de una pizza
-router.get("/ingredientsfrompizza", IngredientController.getIngredientsFromPizza)
+router.get("/ingredientsfrompizza/:id", IngredientController.getIngredientsFromPizza)
 
 module.exports = router;
