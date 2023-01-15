@@ -25,7 +25,7 @@ OrderControllers.orderPizza = async (req, res) => {
         let resp = await models.orders.create({
             createdAt: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDay()}`, //
             pizzaId: pizza.id,
-            userId: req.auth.id,
+            userId: body.id,
             extra: body.extra,
             without: body.without,
             address: body.address
