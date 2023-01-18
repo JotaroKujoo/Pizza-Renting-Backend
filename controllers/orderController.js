@@ -28,7 +28,9 @@ OrderControllers.orderPizza = async (req, res) => {
             userId: body.id,
             extra: body.extra,
             without: body.without,
-            address: body.address
+            address: body.address,
+            quantity: body.quantity,
+            price: body.price
         })
 
         return res.status(200).json({

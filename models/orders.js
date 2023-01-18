@@ -52,6 +52,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     address: DataTypes.STRING,
     quantity: DataTypes.INTEGER,
+    price: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'orders',
