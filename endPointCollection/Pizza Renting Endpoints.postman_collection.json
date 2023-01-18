@@ -1,0 +1,556 @@
+{
+	"info": {
+		"_postman_id": "ebe607b3-8cda-4cf0-a2b6-894d48264340",
+		"name": "Pizza Renting Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23873222"
+	},
+	"item": [
+		{
+			"name": "Pizzas",
+			"item": [
+				{
+					"name": "Get all pizzas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jose2\",\r\n    \"password\": \"Kaka123456\",\r\n    \"mail\": \"rdgz@gmail.com\",\r\n    \"role\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pizzas/getall",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pizzas",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pizzas by name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jose2\",\r\n    \"password\": \"Kaka123456\",\r\n    \"mail\": \"rdgz@gmail.com\",\r\n    \"role\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pizzas/getbyname/:name",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pizzas",
+								"getbyname",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pizzas by pizzeria",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pizzeria\": \"Cheese\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pizzas/getbypizzeria",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pizzas",
+								"getbypizzeria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pizzas by ingredient",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ingredient\":\"Salsa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pizzas/getbyingredient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pizzas",
+								"getbyingredient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pizza by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pizzas/getbyid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pizzas",
+								"getbyid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pizzas by ingredient in pizzeria",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ingredient\":\"Salsa\",\r\n    \"pizzeria\": \"Cheese lovers\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pizzas/getbyingredientinpizzeria",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pizzas",
+								"getbyingredientinpizzeria"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mail\": \"rdr@gmail.com\",\r\n  \"name\" : \"Joselito\",\r\n  \"password\": \"Jose1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pizza-renting-backend-production.up.railway.app/auth/register",
+							"protocol": "https",
+							"host": [
+								"pizza-renting-backend-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mail\": \"rdr@gmail.com\",\r\n  \"name\" : \"Joselito\",\r\n  \"password\": \"Jose1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pizza-renting-backend-production.up.railway.app/auth/login",
+							"protocol": "https",
+							"host": [
+								"pizza-renting-backend-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get user data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicmRyQGdtYWlsLmNvbSIsIm5hbWUiOiJKb3NlbGl0byIsImlkIjoxLCJyb2xlIjoyLCJpYXQiOjE2NzI0NTExNzR9.CUQ9Cho7E1Y_9gYZTC1xdrYodDIAg573JIITL6C0D34",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"rdr@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pizza-renting-backend-production.up.railway.app/user/getmyuserdata",
+							"protocol": "https",
+							"host": [
+								"pizza-renting-backend-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"user",
+								"getmyuserdata"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pizzeria",
+			"item": [
+				{
+					"name": "Get pizzerias by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicmRyQGdtYWlsLmNvbSIsIm5hbWUiOiJKb3NlbGl0byIsImlkIjoxLCJyb2xlIjoyLCJpYXQiOjE2NzI0OTAzMDl9.RCaf7ntee6fjpoMEFmjLqII9pYLFnLi818fTIlmWYZg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pizza-renting-backend-production.up.railway.app/pizzeria/byid",
+							"protocol": "https",
+							"host": [
+								"pizza-renting-backend-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"pizzeria",
+								"byid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all pizzerias",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get pizzerias by Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Cheese Lovers\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pizza-renting-backend-production.up.railway.app/pizzeria/byname",
+							"protocol": "https",
+							"host": [
+								"pizza-renting-backend-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"pizzeria",
+								"byname"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Order pizza",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoiam9AZ21haWwuY29tIiwibmFtZSI6IkpvdGFybyIsImlkIjo1LCJyb2xlIjoyLCJpYXQiOjE2NzQwMTgyMzl9.-pL_oYSHx6hnowKU8f8Z4bW5dWDPdBKhrjswMcEwkCU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPizza\": \"1\",\r\n    \"userId\": 5,\r\n    \"extra\": \"No\",\r\n    \"without\": \"No\",\r\n    \"quantity\": 1,\r\n    \"address\": \"Calle i\",\r\n    \"price\": 8\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pizza-renting-backend-production.up.railway.app/orders/orderpizza",
+							"protocol": "https",
+							"host": [
+								"pizza-renting-backend-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"orders",
+								"orderpizza"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get my orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicmRyQGdtYWlsLmNvbSIsIm5hbWUiOiJKb3NlbGl0byIsImlkIjoxLCJyb2xlIjoyLCJpYXQiOjE2NzI0Njg2NTJ9.F1E-ZFdYU31gj81uZT2WNKv4xhDESFglYTpRInd5UJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\" : \"rdr@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pizza-renting-backend-production.up.railway.app/orders/myorders",
+							"protocol": "https",
+							"host": [
+								"pizza-renting-backend-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"orders",
+								"myorders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ingredients",
+			"item": [
+				{
+					"name": "Get all ingredients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoicmRyQGdtYWlsLmNvbSIsIm5hbWUiOiJKb3NlbGl0byIsImlkIjoxLCJyb2xlIjoyLCJpYXQiOjE2NzI0OTEwMTB9.uNNWOGkXaUyiERDDLwR3QTp30D9-8EKZfZotmL70aYs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pizza-renting-backend-production.up.railway.app/ingredients/getall",
+							"protocol": "https",
+							"host": [
+								"pizza-renting-backend-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"ingredients",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
