@@ -54,24 +54,34 @@ en este repositorio en el directorio **endPointColletion** he dejado una colecci
 
 :heavy_check_mark: Feature 1;\
 El usuario puede registrarse e iniciar sesión, esta última le devolverá un JWT con el que validará las acciones pertinentes cuando sea necesario mientras dure la sesión 
+
+
 :heavy_check_mark: Feature 2;\
 El usuario puede navegar en la aplicación y buscar pizzerias y pizzas, podrá también seleccionar la cantidad de pizzas y almacenarlas en el carrito
-:heavy_check_mark: Feature 3;
+
+
+:heavy_check_mark: Feature 3;\
 El usuario puede realizar pedidos customizables y ver el histórico de todos los pedidos que ha hecho
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
+
 - [Node.js](https://nodejs.org/en/)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Sequelize](https://sequelize.org/)
+- [SQL](https://dev.mysql.com/doc/)
 
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Antes de empezar :checkered_flag:, necesitas tener [Git](https://git-scm.com) y [Node](https://nodejs.org/en/) instalados.
 
 ## :checkered_flag: Starting ##
+
+Guia para ejecutar en local:
+
 
 ```bash
 # Clone this project
@@ -81,10 +91,10 @@ $ git clone https://github.com/JotaroKujoo/pizza-renting-backend
 $ cd pizza-renting-backend
 
 # Install dependencies
-$ yarn
+$ npm i
 
 # Run the project
-$ yarn start
+$ npm run dev
 
 # The server will initialize in the <http://localhost:3000>
 ```
@@ -97,5 +107,25 @@ This project is under license from MIT. For more details, see the [LICENSE](LICE
 Made with :heart: by <a href="https://github.com/JotaroKujoo" target="_blank">Jose Rodríguez</a>
 
 &#xa0;
+
+## Endpoints ##
+
+* Pizzas ("/pizzas");\
+  - Obtener listado de todas las pizzas  ("/getall")
+  - Obtener listado de pizzas por nombre ("/getbyname/:name")
+  - Obtener listado de pizzas en una pizzeria ("/getbypizzeria")
+  - Obtener listado de pizzas filtrando por ingrediente ("/getbyingredient")
+  - Obtener pizza por ID ("/getbyid")
+
+* Auth ("/auth")
+  - Login (/login)
+  - Register(/register)
+* Orders ("/orders")
+  - Crear un pedido ("/orderpizza")
+  - Obtener listado de mis pedidos("/myorders")
+* Pizzeria ("/pizzeria")
+  - Obtener listado de todas las pizzerias ("/all")
+  - Obtener pizzeria filtrando por ID ("/byid/:id")
+  - Obtener listado de pizzerias filtrando por nombre ("/byname")
 
 <a href="#top">Back to top</a>
