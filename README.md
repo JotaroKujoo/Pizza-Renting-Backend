@@ -47,8 +47,15 @@
 ## :dart: About ##
 
 Se trata de una API RESTFUL para un frontend en React, el API está desarrollada en Sequelize de JavaScript con Node.js,
+
+
 actualmente se encuentra en estado de producción en la plataforma Railway con el link  https://pizza-renting-backend-production.up.railway.app,
-en este repositorio en el directorio **endPointColletion** he dejado una colección de Postman para importar con el contenido necesario para realizar todos los endpoints
+
+
+en este repositorio en el directorio **endPointColletion** he dejado una colección de Postman para importar con el contenido necesario para realizar todos los 
+
+
+endpoints
 
 ## :sparkles: Features ##
 
