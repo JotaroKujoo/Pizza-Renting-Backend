@@ -8,7 +8,7 @@ const {OrderControllers} = require("./../controllers/orderController")
 router.post("/orderpizza",OrderControllers.orderPizza)
 
 //Get my orders
-router.get("/myorders",OrderControllers.getMyOrders)
+router.get("/myorders/:id",OrderControllers.getMyOrders)
 
 //Get all orders ADMIN ONLY
 router.get("/allorders",isValidRole(1),OrderControllers.getAllOrders)

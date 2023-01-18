@@ -40,7 +40,7 @@ OrderControllers.getMyOrders = async (req, res) => {
     try {
         let orders = await models.orders.findAll({
             where: {
-                userId: req.auth.id
+                userId: req.params.id
             }
         })
 
