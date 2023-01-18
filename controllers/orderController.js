@@ -10,20 +10,12 @@ OrderControllers.orderPizza = async (req, res) => {
     try {
         let body = req.body;
 
-        let pizza = await models.pizza.findOne({
-            where: {
-                id: body.idPizza
-            }
-        })
-
-        if (!pizza) {
-            return res.status(400).json({ message: "Pizza not founded" })
-        }
+        
         let today = new Date()
 
         let resp = await models.orders.create({
             createdAt: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDay()}`, //
-            pizzaId: pizza.id,
+            pizzaId: body.idPizza,
             userId: body.id,
             extra: body.extra,
             without: body.without,
