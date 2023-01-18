@@ -12,7 +12,6 @@ OrderControllers.orderPizza = async (req, res) => {
 
         let pizza = await models.pizzas.findOne({
             where: {
-                name: body.namePizza,
                 idPizza: body.idPizza
             }
         })
@@ -39,7 +38,7 @@ OrderControllers.orderPizza = async (req, res) => {
         })
 
     } catch (error) {
-        return res.status(error.status || 500).json({ message: "Error while creating order" })
+        return res.status(500).json({ message: "Error while creating order ", error })
     }
 }
 
