@@ -12,7 +12,7 @@ OrderControllers.orderPizza = async (req, res) => {
 
         let pizza = await models.pizza.findOne({
             where: {
-                idPizza: body.idPizza
+                id: body.idPizza
             }
         })
 
