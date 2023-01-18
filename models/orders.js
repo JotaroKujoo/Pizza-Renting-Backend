@@ -51,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     },
     address: DataTypes.STRING,
+    quantity: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'orders',
