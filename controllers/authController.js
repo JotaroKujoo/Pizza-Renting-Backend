@@ -26,10 +26,10 @@ const authRegisterController = async (req, res) => {
     }
     catch (error) {
         console.log(error)
-        res.status(400).json({
+        
+        return res.status(400).json({
             error: "Invalid Password! Must contain 8 characters, a number, a lower and an upper case letter at least."
-        })
-        return;
+        });
     }
     
     // //Assert valid mail
@@ -39,10 +39,10 @@ const authRegisterController = async (req, res) => {
     }
     catch (error) {
         console.log(error)
-        res.status(400).json({
+        
+        return res.status(400).json({
             error: "Invalid Email Structure!"
-        })
-        return;
+        });
     }
 
     // //Assert the mail has been registered
@@ -52,26 +52,30 @@ const authRegisterController = async (req, res) => {
     }
     catch (error) {
         console.log(error)
-        res.status(400).json({
+        
+        return res.status(400).json({
             error: "This mail is already in use!"
-        })
-        return;
+        });
     }
     
 
     // //Create a new user
     try {
-        const newUser = await createUserService(body)
-        res.status(201).json({
+        await createUserService(body)
+        .then(res.status(201).json({
             message: "Registered successfully"
-        })
+        }))
+        .catch(error => res.status(400).json({
+            error: error
+        }))
+        
     }
     catch (error) {
         console.log(error)
-        res.status(500).json({
+        
+        return res.status(500).json({
             error: "Something went wrong!"
-        })
-        return;
+        });
 
     }
 }
@@ -91,8 +95,8 @@ const authLoginController = async (req,res) => {
         })
 
         if (!userFounded) {
-            res.status(400).json({
-                error: "User not found!"
+            return res.status(400).json({
+                error: "Password or email does not match!"
             });
         }
 
@@ -102,7 +106,7 @@ const authLoginController = async (req,res) => {
 
         //Assert if the password matches with hash on DB
         if(userFounded.password !== hashedPassword) {
-            res.status(400).json({
+            return res.status(400).json({
                 error: "Password or email does not match!"
             })
         }
@@ -128,7 +132,9 @@ const authLoginController = async (req,res) => {
         })
 
     } catch (error) {
-        res.send(error)
+        return res.status(500).json({
+            error: error
+        })
     }
 }
 

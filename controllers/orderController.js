@@ -23,6 +23,11 @@ OrderControllers.orderPizza = async (req, res) => {
             quantity: body.quantity,
             price: body.price
         })
+        if(!resp){
+            return res.status(400).json({
+                error: "Error while creating order"
+            })
+        }
 
         return res.status(200).json({
             resp,
@@ -44,12 +49,18 @@ OrderControllers.getMyOrders = async (req, res) => {
             }
         })
 
+        if(!orders){
+            return res.status(404).json({
+                message:"No orders founded"
+            })
+        }
+
         return res.status(200).json({
             orders: orders
         })
     } catch (error) {
-        res.json({ message: "Any order founded" })
         console.log(error)
+        return res.status(500).json({ error: error })
     }
 }
 
@@ -60,11 +71,17 @@ OrderControllers.getAllOrders = async (req, res) => {
     try {
         let orders = await models.orders.findAll()
 
+        if(!orders){
+            return res.status(404).json({
+                message:"No orders founded"
+            })
+        }
+
+
         return res.status(200).json(orders)
     } catch (error) {
-        res.json({ message: "Any order founded" })
         console.log(error)
-    }
+        return res.status(500).json({ error: error })    }
 }
 
 
