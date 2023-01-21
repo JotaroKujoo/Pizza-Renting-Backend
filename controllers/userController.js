@@ -7,13 +7,23 @@ const {encryptPasswordService} = require("../services/AuthServices")
 //Get the data from my profile
 
 UserControllers.getMyData = async (req, res) => {
-    const mail = req.auth.mail
+    try {
+        const mail = req.auth.mail
     const resp = await models.user.findOne({
         where:{
             mail: mail
         }
     })
+
+    if(!resp){
+        return res.status(404).json({message: "No user founded"})
+    }
     return res.status(200).json(resp)
+        
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({error: error})
+    }
 }
 
 //Update the user data

@@ -16,7 +16,7 @@ PizzeriaController.findAllPizzerias = async(req,res) => {
         return res.status(200).json(foundedPizzerias)
     } catch (error) {
         console.log(error)
-        res.status(404).json({
+        return res.status(404).json({
             message: error
         })
         
@@ -43,7 +43,7 @@ PizzeriaController.findPizzeriaByName = async (req,res) => {
     return res.status(200).json({foundPizzeria});
     } catch (error) {
         console.log(error)
-        res.send(error)
+        return res.status(500).json({error: error})
     }
 }
 
@@ -57,32 +57,45 @@ PizzeriaController.findPizzeriaById = async (req,res) => {
                 id:pizzeriaId
             }
         })
+
+        if (!foundPizzeria) {
+            return res.status(404).json({error: "Pizzeria not founded"})
+        }
+
         return res.status(200).json({foundPizzeria});
     }catch(error){
         console.log(error)
-        res.send(error)
-    }
+        return res.status(500).json({error:error});
+   }
 }
 
 PizzeriaController.getPizzasOnPizzeria = async (req,res) => {
     const pizzeriaName = req.body.name
 
-    const foundPizzeria = await models.pizzerias.findOne({
-        where:{
-            name:pizzeriaName
-        }
-    })
-    if(!foundPizzeria){
-        return res.status(404).json({
-            message: "Pizzeria no encontrada."
+    try {
+        const foundPizzeria = await models.pizzerias.findOne({
+            where:{
+                name:pizzeriaName
+            }
         })
-    }
-    const pizzasOnPizzeria = models.pizza.findAll({
-        where:{
-            name_pizzeria:pizzeriaName
+        if(!foundPizzeria){
+            return res.status(404).json({
+                message: "Pizzeria no encontrada."
+            })
         }
-    })
-    return res.status(200).json(pizzasOnPizzeria)
+        const pizzasOnPizzeria = models.pizza.findAll({
+            where:{
+                name_pizzeria:pizzeriaName
+            }
+        })
+        if(!pizzasOnPizzeria){
+            return res.status(404).json({error: "Pizzas on Pizzeria not founded"})
+        }
+        return res.status(200).json(pizzasOnPizzeria)
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error: error})
+    }
     
 }
 
