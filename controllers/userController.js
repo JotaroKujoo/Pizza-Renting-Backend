@@ -28,13 +28,19 @@ UserControllers.getMyData = async (req, res) => {
 
 //Update the user data
 UserControllers.updateUserData = async (req, res) => {
-    const mail = req.auth.mail
+    try {
+        const mail = req.auth.mail
     const user = req.body    
     const userFound = await models.user.findOne({
         where: {
             mail: req.auth.mail
         }
     })
+
+    if(!userFound){
+        return res.status(404).json({message: "Usuario no encontrado"})
+    }
+
     let newPassword = userFound.password
     if (user.password) {
         newPassword = encryptPasswordService(user.password)
@@ -51,27 +57,42 @@ UserControllers.updateUserData = async (req, res) => {
             }
         }
     )
+
+    if(!resp){
+        return res.status(404).json({error: "Usuario no actualizado"})
+    }
     return res.status(200).json(resp,{
         message: "user updated successfully"
     })
+        
+    } catch (error) {
+        return res.status(500).json({error: error})
+    }
     
 }
 
 //Delete an user ONLY ADMIN
 
 UserControllers.deleteUser = async (req, res) => {
-    const mail = req.body.mail
-    if (mail === req.auth.mail){
-        throw new Error("You can't delete yourself as administrator")
-    }
-    let resp = await models.user.destroy({
-        where: {
-            mail: mail
+    try {
+        const mail = req.body.mail
+        if (mail === req.auth.mail){
+            throw new Error("You can't delete yourself as administrator")
         }
-    })
-    return res.status(200).json(resp,{
-        message: "User deleted successfully"
-    });
+        let resp = await models.user.destroy({
+            where: {
+                mail: mail
+            }
+        })
+        if(!resp){
+            return res.status(404).json({message: "User not deleted"})
+        }
+        return res.status(200).json(resp,{
+            message: "User deleted successfully"
+        });
+    } catch (error) {
+        return res.status(500).json({error: error})
+    }
 }
 
 
