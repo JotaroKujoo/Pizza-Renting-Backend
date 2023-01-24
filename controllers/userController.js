@@ -53,7 +53,7 @@ UserControllers.updateUserData = async (req, res) => {
             },
             {
                 where: {
-                    mail: mail
+                    mail: user.mail
                 }
             }
         )
