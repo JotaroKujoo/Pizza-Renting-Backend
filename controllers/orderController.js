@@ -69,7 +69,7 @@ OrderControllers.getMyOrders = async (req, res) => {
 //ADMIN ONLY
 OrderControllers.getAllOrders = async (req, res) => {
     try {
-        let orders = await models.orders.findAll()
+        let orders = await models.orders.findAll({})
 
         if(!orders){
             return res.status(404).json({
