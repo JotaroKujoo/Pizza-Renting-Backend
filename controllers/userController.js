@@ -57,17 +57,15 @@ UserControllers.updateUserData = async (req, res) => {
                 }
             }
         ).then((resp)=>{
-            return res.send().json(resp, {
-                message: "user updated successfully"
-            })
+            return res.status(200).json(resp)
         }).catch((error)=>{
-            return res.status(404).json(error,{ error: "Usuario no actualizado" })
+            return res.status(404).json(error)
 
         })
         
 
     } catch (error) {
-        return await res.status(500).json(error,{ error: "error" })
+        return res.status(500).json(error)
     }
 
 }
