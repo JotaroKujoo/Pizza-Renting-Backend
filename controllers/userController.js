@@ -67,7 +67,7 @@ UserControllers.updateUserData = async (req, res) => {
         
 
     } catch (error) {
-        return res.status(500).json({ error: error })
+        return await res.status(500).json({ error: error })
     }
 
 }
@@ -92,7 +92,7 @@ UserControllers.deleteUser = async (req, res) => {
             message: "User deleted successfully"
         });
     } catch (error) {
-        return res.status(500).json({ error: error })
+        return await res.status(500).json({ error: error })
     }
 }
 
