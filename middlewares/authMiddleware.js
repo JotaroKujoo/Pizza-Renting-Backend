@@ -32,6 +32,7 @@ const authBearerMiddleware = async (req, res,next) => {
 
 
 const isValidRole = (role) => (req,res,next) => {
+    console.log(req.auth)
     if (req.auth?.role === role) {
         next();
     }else{
