@@ -97,13 +97,8 @@ UserControllers.deleteUser = async (req, res) => {
 
 UserControllers.getAllUsers = async (req, res) => {
     try {
-        let foundedUsers = await models.user.findAll({})
-        if (!foundedUsers) {
-            return res.status(404).json({
-                message: "No users founded"
-            })
-        }
-        return res.status(200).json(foundedUsers)
+        return await models.user.findAll({}).then((resp)=>{return res.status(200).json(resp)}).catch((error)=>{return res.status(401).json(error)})
+        
     } catch (error) {
         console.log(error)
         return res.status(500).json({ error: error })
