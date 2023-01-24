@@ -13,7 +13,7 @@ router.get("/getmyuserdata/:mail", UserControllers.getMyData)
 router.patch("/updatemyuserdata", UserControllers.updateUserData)
 
 //Delete an user ONLY ADMIN
-router.delete("/deleteuser", isValidRole(1), UserControllers.deleteUser)
+router.delete("/deleteuser/:role", isValidRole("1"), UserControllers.deleteUser)
 
 //Get all users ONLY ADMIN
 
