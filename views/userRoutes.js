@@ -7,7 +7,7 @@ const { isValidRole } = require("./../middlewares/authMiddleware")
 
 
 //Get data from user
-router.get("/getmyuserdata", UserControllers.getMyData)
+router.get("/getmyuserdata/:mail", UserControllers.getMyData)
 
 //Update data from user
 router.patch("/updatemyuserdata", UserControllers.updateUserData)

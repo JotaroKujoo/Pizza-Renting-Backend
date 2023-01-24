@@ -8,7 +8,7 @@ const { encryptPasswordService } = require("../services/AuthServices")
 
 UserControllers.getMyData = async (req, res) => {
     try {
-        const mail = req.body.mail
+        const mail = req.params.mail
         const resp = await models.user.findOne({
             where: {
                 mail: mail
