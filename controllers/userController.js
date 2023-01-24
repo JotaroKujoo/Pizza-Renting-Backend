@@ -97,7 +97,12 @@ UserControllers.deleteUser = async (req, res) => {
 
 UserControllers.getAllUsers = async (req, res) => {
     try {
-        return await models.user.findAll({}).then((resp)=>{return res.status(200).json(resp)}).catch((error)=>{return res.status(401).json(error)})
+        return await models.user.findAll({})
+        .then((resp)=>{
+            return res.status(200).json(resp)})
+        .catch((error)=>{
+            console.log(error)
+            return res.status(401).json(error)})
         
     } catch (error) {
         console.log(error)
