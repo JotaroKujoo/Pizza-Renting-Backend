@@ -1,12 +1,12 @@
 const jsonwebtoken = require('jsonwebtoken');
 require("dotenv").config;
 
-const authBearerMiddleware = async (req, res,next) => {
-    
+const authBearerMiddleware = async (req, res, next) => {
+
     try {
         const { authorization } = req.headers;
-        if(!authorization){
-            return res.status(401).json({message:"Not token provided"});
+        if (!authorization) {
+            return res.status(401).json({ message: "Not token provided" });
         }
         const [strategy, jwt] = authorization.split(" ");
         if (strategy.toLowerCase() !== "bearer") {
@@ -21,9 +21,9 @@ const authBearerMiddleware = async (req, res,next) => {
         }
         req.auth = payload;
         next()
-        
-    } catch (error) {        
-        res.status(401).json({message:"You're not authenticated"})
+
+    } catch (error) {
+        res.status(401).json({ message: "You're not authenticated" })
         console.log(error)
         return
     };
@@ -31,12 +31,12 @@ const authBearerMiddleware = async (req, res,next) => {
 
 
 
-const isValidRole = (role) => (req,res,next) => {
+const isValidRole = (role) => (req, res, next) => {
     console.log(req.body)
     if (req.body.role === role) {
         next();
-    }else{
-        res.status(401).json({message:"You're not authorized"})
+    } else {
+        res.status(401).json({ message: "You're not authorized" })
         return
 
     }
