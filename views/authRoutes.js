@@ -9,6 +9,6 @@ const {
 
 router.post('/login', authLoginController)
 router.post('/register', authRegisterController)
-router.post("registeradmin", authRegisterControllerAdmin)
+router.post("/registeradmin", authRegisterControllerAdmin)
 
 module.exports = router;
