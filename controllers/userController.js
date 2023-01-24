@@ -44,7 +44,7 @@ UserControllers.updateUserData = async (req, res) => {
         if (user.password) {
             newPassword = encryptPasswordService(user.password)
         }
-        let resp = await models.user.update(
+        await models.user.update(
             {
                 name: user.name,
                 mail: user.mail,
@@ -56,14 +56,15 @@ UserControllers.updateUserData = async (req, res) => {
                     mail: user.mail
                 }
             }
-        )
+        ).then((resp)=>{
+            return res.status(200).json(resp, {
+                message: "user updated successfully"
+            })
+        }).catch((error)=>{
+            return res.status(404).json(error,{ error: "Usuario no actualizado" })
 
-        if (!resp) {
-            return res.status(404).json({ error: "Usuario no actualizado" })
-        }
-        return res.status("400").json(resp, {
-            message: "user updated successfully"
         })
+        
 
     } catch (error) {
         return res.status(500).json({ error: error })
