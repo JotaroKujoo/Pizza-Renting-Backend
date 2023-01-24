@@ -63,6 +63,22 @@ const createUserService = async(userBody) => {
      return user;
 }
 
+const createAdminService = async(userBody) => {
+    const hash = encryptPasswordService(userBody.password);
+    userBody.password = hash
+    let today = new Date()
+    
+    const user = await models.user.create({
+       name: userBody.name,
+       mail: userBody.mail,
+       password: userBody.password,
+       createdAt: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDay()}`,
+       updatedAt: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDay()}`,
+       roleId: 1
+    })
+    return user;
+}
+
 
 
 
@@ -74,5 +90,6 @@ module.exports = {
     assertEmailIsValidService,
     encryptPasswordService,
     createUserService,
+    createAdminService
 }
 

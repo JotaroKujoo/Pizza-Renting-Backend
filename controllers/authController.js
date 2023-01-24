@@ -3,7 +3,8 @@ const {
     assertEmailIsUniqueService,
     assertEmailIsValidService,
     encryptPasswordService,
-    createUserService
+    createUserService,
+    createAdminService
 
 } = require("./../services/AuthServices");
 
@@ -62,6 +63,71 @@ const authRegisterController = async (req, res) => {
     // //Create a new user
     try {
         await createUserService(body)
+        .then(res.status(201).json({
+            message: "Registered successfully"
+        }))
+        .catch(error => res.status(400).json({
+            error: error
+        }))
+        
+    }
+    catch (error) {
+        console.log(error)
+        
+        return res.status(500).json({
+            error: "Something went wrong!"
+        });
+
+    }
+}
+
+const authRegisterControllerAdmin = async (req, res) => {
+    const body = await req.body
+
+    
+
+    // Assert valid password
+    try {
+        assertValidPasswordService(body.password)
+    }
+    catch (error) {
+        console.log(error)
+        
+        return res.status(400).json({
+            error: "Invalid Password! Must contain 8 characters, a number, a lower and an upper case letter at least."
+        });
+    }
+    
+    // //Assert valid mail
+    try {
+        assertEmailIsValidService(body.mail)
+        
+    }
+    catch (error) {
+        console.log(error)
+        
+        return res.status(400).json({
+            error: "Invalid Email Structure!"
+        });
+    }
+
+    // //Assert the mail has been registered
+    try {
+        assertEmailIsUniqueService(body.mail)
+        
+    }
+    catch (error) {
+        console.log(error)
+        
+        return res.status(400).json({
+            error: "This mail is already in use!"
+        });
+    }
+    
+
+    // //Create a new user
+    try {
+        await createAdminService(body)
         .then(res.status(201).json({
             message: "Registered successfully"
         }))
@@ -140,5 +206,6 @@ const authLoginController = async (req,res) => {
 
 module.exports = {
     authLoginController,
-    authRegisterController
+    authRegisterController,
+    authRegisterControllerAdmin
 }

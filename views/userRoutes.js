@@ -15,4 +15,8 @@ router.patch("/updatemyuserdata",UserControllers.updateUserData)
 //Delete an user ONLY ADMIN
 router.delete("/deleteuser",isValidRole(1),UserControllers.deleteUser)
 
+//Get all users ONLY ADMIN
+
+router.get("/getallusers",isValidRole(1),UserControllers.getAllUsers)
+
 module.exports = router
