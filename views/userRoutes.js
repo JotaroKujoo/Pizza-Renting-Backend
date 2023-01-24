@@ -17,6 +17,6 @@ router.delete("/deleteuser", isValidRole(1), UserControllers.deleteUser)
 
 //Get all users ONLY ADMIN
 
-router.get("/getallusers", isValidRole(1), UserControllers.getAllUsers)
+router.get("/getallusers/role", isValidRole(1), UserControllers.getAllUsers)
 
 module.exports = router
