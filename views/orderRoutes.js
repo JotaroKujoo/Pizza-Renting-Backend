@@ -11,6 +11,6 @@ router.post("/orderpizza",OrderControllers.orderPizza)
 router.get("/myorders/:id",OrderControllers.getMyOrders)
 
 //Get all orders ADMIN ONLY
-router.get("/allorders",isValidRole(1),OrderControllers.getAllOrders)
+router.get("/allorders/:role",isValidRole(1),OrderControllers.getAllOrders)
 
 module.exports = router;
