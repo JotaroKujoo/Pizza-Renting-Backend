@@ -75,6 +75,7 @@ UserControllers.updateUserData = async (req, res) => {
 UserControllers.deleteUser = async (req, res) => {
     try {
         const mail = req.body.mail
+        console.log(mail)
         if (mail === req.auth.mail) {
             throw new Error("You can't delete yourself as administrator")
         }
