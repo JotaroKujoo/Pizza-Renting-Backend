@@ -86,7 +86,7 @@ UserControllers.deleteUser = async (req, res) => {
         if (!resp) {
             return res.status(404).json({ message: "User not deleted" })
         }
-        return res.status(200).json(resp, {
+        return res.status(200).json({resp,
             message: "User deleted successfully"
         });
     } catch (error) {
